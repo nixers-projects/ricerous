@@ -1,6 +1,6 @@
 Ricerous - A Ricer Helper
 ============
-![unit test](https://travis-ci.org/venam/ricer-helper.svg)
+![unit test](https://travis-ci.org/nixers-projects/ricerous.svg)
 
 #WIP
 
