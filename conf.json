@@ -1,0 +1,6 @@
+{
+"comments":
+{"TTY": "perl-term-extendedcolor-tty with the following colors http://somelink", "Shell": "Zsh \nconfigs http://github.com/venam/dots...", "Terminal emulator": "urxvt\nconfigs http://somelink...", "File managers": "thunar\ncatfish for search\nshortcut to open terminal in place\ndefault ranger", "GUI": "Custom version of FlatStudio Dark http://slfajdskljf.com\nIcons AnyColorYouLike\nCursor DMZ Black", "Wallpaper": "Tiles http://link to tiles", "Text editor": "vim\nconfigs: http://somestuff\nplugins: supertab, nerdtree, vim-bling, vim-surround", "Login managers": "Custom PAM module made from pam_captcha\nhttp://www.semicomplete.com/projects/pam_captcha/", "Information system": "Custom python script", "IM": "irssi\ntheme: ...\nplugins: ...", "Window manager": "2bwm, configs ...", "Web browser": "icecat with custom css\nhttp://...\naddons: vimperator and blah blah blah"}
+,"selections":
+["Login managers", "Shell", "TTY", "GUI", "Information system", "Wallpaper", "Window manager", "Terminal emulator", "File managers", "Text editor", "IM", "Web browser"]
+}
