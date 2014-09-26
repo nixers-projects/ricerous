@@ -25,11 +25,11 @@ import time
 import os
 
 
-file        = JsonInfoReader.JsonInfoReader("info.json")
-state       = State.State()
-out         = Outputer.Outputer("plugins")
+jfile = JsonInfoReader.JsonInfoReader("info.json")
+state = State.State()
+out   = Outputer.Outputer("plugins")
 
-subButtons  = {}
+subButtons = {}
 
 DEFAULT_ON_OPEN    = "Bootloader"
 
@@ -95,8 +95,8 @@ class InfoScreen(BoxLayout):
 
         self.add_widget(HeadInfo(self.value))
 
-        global file
-        inst = file
+        global jfile
+        inst = jfile
 
         inf = inst.getInfo(self.value)
         txts = TextInput(text = inf, background_color = (0.15, 0.15, 0.15, 1),
@@ -184,8 +184,8 @@ class AccordionThing(Accordion):
         self.selected = object.text
 
     def draw(self):
-        global file
-        inst = file
+        global jfile
+        inst = jfile
 
         for cat in inst.listCategories():
             self.blades.append(AccordionItem(title = cat, font_size = "20sp"))
@@ -231,7 +231,7 @@ class ButtonBar(BoxLayout):
                     if choice.state == 'down':
                         selected = choice.text
                         break
-                out.output(selected,state,file,os.path.join(path,filename))
+                out.output(selected,state,jfile,os.path.join(path,filename))
             else:
                 state.save(os.path.join(path, filename))
             self.dismiss_popup()
@@ -249,7 +249,7 @@ class ButtonBar(BoxLayout):
 
     def showUpdate(self):
         try:
-            status = file.update()
+            status = jfile.update()
             content = BoxLayout(orientation = 'vertical')
             if status == 0:
                 content.add_widget(Label(text=UPDATE_SUCC_TEXT))
