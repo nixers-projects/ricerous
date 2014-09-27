@@ -30,7 +30,7 @@ class Updater:
         jsonFile = open(self._infoFile, 'r').read()
         jsonHash = md5.new(jsonFile).hexdigest()
         # Server File
-        servFile = self.br.open(self._server).read().replace("\n", "")
+        servFile = self.br.open(self._server).read()
         servHash = md5.new(servFile).hexdigest()
         # Difference?
         return (jsonHash != servHash)
