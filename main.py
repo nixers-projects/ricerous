@@ -25,11 +25,11 @@ import time
 import os
 
 
-file        = JsonInfoReader.JsonInfoReader("info.json")
-state       = State.State()
-out         = Outputer.Outputer("plugins")
+jfile = JsonInfoReader.JsonInfoReader("info.json")
+state = State.State()
+out   = Outputer.Outputer("plugins")
 
-subButtons  = {}
+subButtons = {}
 
 DEFAULT_ON_OPEN    = "Bootloader"
 
@@ -83,7 +83,7 @@ class SwitchScreen(BoxLayout):
 
 
 class InfoScreen(BoxLayout):
-#    txts = ObjectProperty(None)
+    # txts = ObjectProperty(None)
 
     def __init__(self, value = "", **kwargs):
         super(InfoScreen, self).__init__(**kwargs)
@@ -95,8 +95,8 @@ class InfoScreen(BoxLayout):
 
         self.add_widget(HeadInfo(self.value))
 
-        global file
-        inst = file
+        global jfile
+        inst = jfile
 
         inf = inst.getInfo(self.value)
         txts = TextInput(text = inf, background_color = (0.15, 0.15, 0.15, 1),
@@ -104,13 +104,11 @@ class InfoScreen(BoxLayout):
             size_hint = (1.0, None))
         txts.bind(minimum_height=txts.setter('height'))
         txts.text = inf
-        scroll = ScrollView(size_hint = (1, 1),
-                size = (width, height))
+        scroll = ScrollView(size_hint = (1, 1), size = (width, height))
         scroll.add_widget(txts)
         self.add_widget(scroll)
 
-        scroll2 = ScrollView(size_hint = (1, 0.2),
-                size = (width, height))
+        scroll2 = ScrollView(size_hint = (1, 0.2), size = (width, height))
         comments = TextInput(multiline=True, foreground_color = [0.9, 0.9, 0.9, 1], 
             size_hint = (1.0, None), background_color = (0.5, 0.5, 0.5,1))
         comments.bind(minimum_height=comments.setter('height'))
@@ -128,9 +126,9 @@ class InfoScreen(BoxLayout):
     
     def on_text(self, instance, newText):
         #remove trailing spaces
-        newText              = newText.rstrip()
-        defaultWithoutSpace  = DEFAULT_COMMENT.replace(" ","").replace("\n","")
-        newTextWithoutSpace  = newText.replace(" ","").replace("\n","")
+        newText             = newText.rstrip()
+        defaultWithoutSpace = DEFAULT_COMMENT.replace(" ","").replace("\n","")
+        newTextWithoutSpace = newText.replace(" ","").replace("\n","")
         if newTextWithoutSpace in defaultWithoutSpace or newTextWithoutSpace == "":
             if self.value in state.comments.keys():
                 del(state.comments[self.value])
@@ -139,11 +137,11 @@ class InfoScreen(BoxLayout):
 
 
 class HeadInfo(Widget):
-    header       = ObjectProperty(None)
+    header = ObjectProperty(None)
 
     def __init__(self, value, **kwargs):
         super(HeadInfo, self).__init__(**kwargs)
-        self.header.text  = value
+        self.header.text = value
         self.value = value
         if self.value in state.selected:
             self.riced.active = True
@@ -177,15 +175,15 @@ class AccordionThing(Accordion):
         super(AccordionThing, self).__init__(**kwargs)
         self.orientation = 'vertical'
         self.blades      = []
-        subButtons  = []
+        subButtons       = []
         self.draw()
 
     def switch(self, object):
         self.selected = object.text
 
     def draw(self):
-        global file
-        inst = file
+        global jfile
+        inst = jfile
 
         for cat in inst.listCategories():
             self.blades.append(AccordionItem(title = cat, font_size = "20sp"))
@@ -210,12 +208,12 @@ class ButtonBar(BoxLayout):
 
     def __init__(self, **kwargs):
         super(ButtonBar, self).__init__(**kwargs)
-        self.outputing   = False
+        self.outputing = False
 
     def showImport(self):
         content = LoadDialog(load=self.load, cancel=self.dismiss_popup)
         self._popup = Popup(title="Import config", content=content,
-                size_hint=(0.9, 0.9))
+            size_hint=(0.9, 0.9))
         self._popup.open()
 
     def showExport(self):
@@ -231,7 +229,7 @@ class ButtonBar(BoxLayout):
                     if choice.state == 'down':
                         selected = choice.text
                         break
-                out.output(selected,state,file,os.path.join(path,filename))
+                out.output(selected,state,jfile,os.path.join(path,filename))
             else:
                 state.save(os.path.join(path, filename))
             self.dismiss_popup()
@@ -241,7 +239,7 @@ class ButtonBar(BoxLayout):
     def showHelp(self):
         content = BoxLayout(orientation = 'vertical')
         content.add_widget(Label(text=HELP_TEXT))
-        closeButton  = Button(text='Close',size_hint_y = 0.15)
+        closeButton = Button(text='Close',size_hint_y = 0.15)
         content.add_widget(closeButton)
         self._popup = Popup(title='Help', content=content,size_hint=(0.9, 0.9))
         closeButton.bind(on_press=self._popup.dismiss)
@@ -249,7 +247,7 @@ class ButtonBar(BoxLayout):
 
     def showUpdate(self):
         try:
-            status = file.update()
+            status = jfile.update()
             content = BoxLayout(orientation = 'vertical')
             if status == 0:
                 content.add_widget(Label(text=UPDATE_SUCC_TEXT))
@@ -306,7 +304,7 @@ class ButtonBar(BoxLayout):
             for subButton in subButtons.values():
                 subButton.color = [1.0,1.0,1.0,1]
             for select in state.selected:
-                subButtons[select].color =  [ 0.306, 0.464, 0.80, 1]
+                subButtons[select].color = [ 0.306, 0.464, 0.80, 1]
             self.dismiss_popup()
         except Exception:
             self.error("Could not load config file")
@@ -315,7 +313,7 @@ class ButtonBar(BoxLayout):
         self.dismiss_popup()
         content = BoxLayout(orientation = 'vertical')
         content.add_widget(Label(text=message))
-        closeButton  = Button(text='OK',size_hint_y = 0.15)
+        closeButton = Button(text='OK',size_hint_y = 0.15)
         content.add_widget(closeButton)
         self._popup = Popup(title='Error', content=content,size_hint=(0.5, 0.5))
         closeButton.bind(on_press=self._popup.dismiss)

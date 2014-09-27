@@ -41,15 +41,15 @@ for i in range(len(my_file)):
         if category != -1 and not first_time:
             tmp_dico[categories[category]] = output
             #print categories[category]
-        category += 1
+        category  += 1
         first_time = False
-        output    = ""
+        output     = ""
     else:
         output += my_file[i].replace('"','\"')
         if i+1 != len(my_file) and my_file[i+1].startswith("!!!"):
             tmp_dico[categories[category]] = output
             #print categories[category]
-            output    = ""
+            output = ""
         elif i+1 == len(my_file):
             tmp_dico[categories[category]] = output
             #print categories[category]
@@ -58,5 +58,4 @@ for i in range(len(my_file)):
 
 
 print json.JSONEncoder().encode(dico)
-    
 

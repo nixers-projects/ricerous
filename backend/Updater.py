@@ -31,7 +31,7 @@ class Updater:
 
     """
     generateTimeStamp :: String
-    returns a string that is used to timestamp old config  backup files
+    returns a string that is used to timestamp old config backup files
     """
     def generateTimeStamp(self):
         return str(time.gmtime().tm_year)+"_"+str(time.gmtime().tm_mday)+"_"+str(time.gmtime().tm_hour)+"_"+str(time.gmtime().tm_min)
