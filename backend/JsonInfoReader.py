@@ -17,14 +17,15 @@ class JsonInfoReader:
     """
     def __init__(self, infoFile):
         self._infoFile = infoFile
-        info_json      = open(infoFile, 'r')
-        self._allInfo  = json.load(info_json)
+        info_json = open(infoFile, 'r')
+        self._allInfo = json.load(info_json)
         info_json.close()
-        # Might want to read that host from a file
         """
         WARNING: an Updater object is created in the constructor
+        Might want to read that host from a file
         """
-        self._updater = Updater.Updater("http://venam.nixers.net",
+        server = "raw.githubusercontent.com/Foggalong/ricerous/master/json"
+        self._updater = Updater.Updater("https://" + server + "/info.json",
                                         self._infoFile)
 
     """

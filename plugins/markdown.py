@@ -6,7 +6,7 @@ def getName():
 def output(state, information):
     categories = information.listCategories()
     selections = state.selected
-    toSave     = ""
+    toSave = ""
 
     for category in categories:
         found = 0

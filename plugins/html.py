@@ -5,8 +5,7 @@ def getName():
 def output(state, information):
     categories = information.listCategories()
     selections = state.selected
-    toSave     = ""
-    toSave    += """
+    toSave = """
 <html>
     <head>
     </head>

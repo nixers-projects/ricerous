@@ -50,7 +50,7 @@ class Updater:
     and overwrite it
     """
     def fetchNewInfo(self):
-        response = self.br.open(self._server+'/info.json').read()
+        response = self.br.open(self._server).read()
         oldInfo = open(self._infoFile, 'r').read()
         open(self._infoFile+"."+self.generateTimeStamp(), 'w').write(oldInfo)
         open(self._infoFile, 'w').write(response)

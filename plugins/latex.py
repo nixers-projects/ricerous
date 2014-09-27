@@ -6,7 +6,7 @@ def getName():
 def output(state, information):
     categories = information.listCategories()
     selections = state.selected
-    toSave     = """\\documentclass{article}
+    toSave = """\\documentclass{article}
 \\title{Ricing Information}
 \\date{\\today}
 \\author{Your Name}
