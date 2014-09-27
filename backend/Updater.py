@@ -1,5 +1,4 @@
 from urllib import URLopener
-from time import gmtime
 import md5
 
 """
@@ -17,6 +16,8 @@ class Updater:
     """
     def __init__(self, server, infoFile):
         self._server = server
+        self.serverJSON = server + "json/info.json"
+        self.serverDate = server + "json/version"
         self._infoFile = infoFile
         self.br = URLopener()
 
@@ -26,17 +27,16 @@ class Updater:
     and returns true if the server version is newer
     """
     def hasNewInfo(self):
-        jsonDate = open('version', 'r').read()
-        servDate = self.br.open(self._server).read()
-        return (jsonDate < servDate)
+        jsonDate = open('json/version', 'r').read().strip()
+        servDate = self.br.open(self.serverDate).read().strip()
+        return (int(jsonDate) < int(servDate))
 
     """
     generateTimeStamp :: String
     returns a string that is used to timestamp old config backup files
     """
     def generateTimeStamp(self):
-        return str(gmtime().tm_year) + "_" + str(gmtime().tm_mday) + "_" + \
-            str(gmtime().tm_hour) + "_" + str(gmtime().tm_min)
+        return open('json/version', 'r').read().strip()
 
     """
     fetchNewInfo :: Void
@@ -45,7 +45,11 @@ class Updater:
     and overwrite it
     """
     def fetchNewInfo(self):
-        response = self.br.open(self._server).read()
+        # Fetching server's info.json
+        response = self.br.open(self.serverJSON).read()
         oldInfo = open(self._infoFile, 'r').read()
-        open(self._infoFile+"."+self.generateTimeStamp(), 'w').write(oldInfo)
+        open(self._infoFile + self.generateTimeStamp() + ".json", 'w').write(oldInfo)
         open(self._infoFile, 'w').write(response)
+        # Fetching server's version
+        servDate = int(self.br.open(self.serverDate).read().strip())
+        open("json/version", 'w').write(response)
