@@ -1,10 +1,13 @@
 from urllib import URLopener
-import time
+from time import gmtime
 import md5
 
 """
 The role of this class is to handle the Update of the configurations
 """
+
+# doesn't actually have latest json
+
 
 class Updater:
     """
@@ -12,7 +15,7 @@ class Updater:
     it will use this server to fetch the new information
     there should be a /hash and /info.json dir on this server
     """
-    def __init__(self,server,infoFile):
+    def __init__(self, server, infoFile):
         self._server = server
         self._infoFile = infoFile
         self.br = URLopener()
@@ -23,18 +26,22 @@ class Updater:
     and returns true if they are different
     """
     def hasNewInfo(self):
-        f = open(self._infoFile,'r').read()
-        m = md5.new(f).hexdigest()
-        response = self.br.open(self._server+'/hash').read()
-        response = response.replace("\n","")
-        return (m!=response)
+        # Offline File
+        jsonFile = open(self._infoFile, 'r').read()
+        jsonHash = md5.new(jsonFile).hexdigest()
+        # Server File
+        servFile = self.br.open(self._server).read()
+        servHash = md5.new(servFile).hexdigest()
+        # Difference?
+        return (jsonHash != servHash)
 
     """
     generateTimeStamp :: String
     returns a string that is used to timestamp old config backup files
     """
     def generateTimeStamp(self):
-        return str(time.gmtime().tm_year)+"_"+str(time.gmtime().tm_mday)+"_"+str(time.gmtime().tm_hour)+"_"+str(time.gmtime().tm_min)
+        return str(gmtime().tm_year) + "_" + str(gmtime().tm_mday) + "_" + \
+            str(gmtime().tm_hour) + "_" + str(gmtime().tm_min)
 
     """
     fetchNewInfo :: Void
@@ -43,8 +50,7 @@ class Updater:
     and overwrite it
     """
     def fetchNewInfo(self):
-        response = self.br.open(self._server+'/info.json').read()
-        oldInfo = open(self._infoFile,'r').read()
-        open(self._infoFile+"."+self.generateTimeStamp(),'w').write(oldInfo)
-        open(self._infoFile,'w').write(response)
-
+        response = self.br.open(self._server).read()
+        oldInfo = open(self._infoFile, 'r').read()
+        open(self._infoFile+"."+self.generateTimeStamp(), 'w').write(oldInfo)
+        open(self._infoFile, 'w').write(response)

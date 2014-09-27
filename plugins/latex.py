@@ -2,10 +2,11 @@
 def getName():
     return "latex"
 
-def output(state,information):
+
+def output(state, information):
     categories = information.listCategories()
     selections = state.selected
-    toSave     = """\\documentclass{article}
+    toSave = """\\documentclass{article}
 \\title{Ricing Information}
 \\date{\\today}
 \\author{Your Name}
@@ -16,13 +17,13 @@ def output(state,information):
         found = 0
         for selection in selections:
             if information.getCategory(selection) == category:
-                if state.comments[selection] :
+                if state.comments[selection]:
                     found += 1
                     if found == 1:
                         toSave += "\n\\section{" + category + "}\n\n"
-                    toSave += "\\subsection{"+ selection+"}\n"
+                    toSave += "\\subsection{" + selection + "}\n"
                     commentLines = state.comments[selection].split("\n")
-                    for line in commentLines :
+                    for line in commentLines:
                         toSave += line+"\n"
 
     return toSave+"\n\\end{document}"
