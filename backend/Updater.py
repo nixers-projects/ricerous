@@ -6,6 +6,8 @@ import md5
 The role of this class is to handle the Update of the configurations
 """
 
+# doesn't actually have latest json
+
 
 class Updater:
     """

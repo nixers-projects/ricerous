@@ -9,7 +9,7 @@ import unittest
 class RicerTest(unittest.TestCase):
 
     def testInfoReader(self):
-        info = JsonInfoReader.JsonInfoReader("info.json")
+        info = JsonInfoReader.JsonInfoReader("json/info.json")
         self.assertTrue(len(info.listCategories()) > 1)
         self.assertTrue(len(info.listInsideCategories("raw")) > 1)
         self.assertFalse(len(info.listInsideCategories("Not Real Category")) > 0)
@@ -44,7 +44,7 @@ class RicerTest(unittest.TestCase):
         self.assertTrue(len(state.selected) == 2)
         state.comments = {}
         state.selected = []
-        state.load("conf.json")
+        state.load("json/conf.json")
         self.assertTrue(len(state.comments) > 0)
         self.assertTrue(len(state.selected) > 0)
 

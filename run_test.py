@@ -4,7 +4,7 @@ import random
 
 out = Outputer.Outputer("plugins")
 state = State.State()
-info = JsonInfoReader.JsonInfoReader("info.json")
+info = JsonInfoReader.JsonInfoReader("json/info.json")
 state.addSelect("Bootloader")
 state.addComment("Bootloader","I use a magenta... blah blah")
 state.addSelect("Window manager")

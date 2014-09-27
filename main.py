@@ -25,7 +25,7 @@ import time
 import os
 
 
-jfile = JsonInfoReader.JsonInfoReader("info.json")
+jfile = JsonInfoReader.JsonInfoReader("json/info.json")
 state = State.State()
 out   = Outputer.Outputer("plugins")
 
@@ -35,7 +35,7 @@ DEFAULT_ON_OPEN    = "Bootloader"
 
 DEFAULT_COMMENT    = "Insert a comment here\n\n"
 UPDATE_SUCC_TEXT   = "Update Successful! :)"
-UPDATE_UNSUCC_TEXT = "Update Unsuccessful :( "
+UPDATE_UNSUCC_TEXT = "Update Unsuccessful! :( "
 NO_UPDATE_TEXT     = "No new update available"
 HELP_TEXT          = """
 Check info about riceable things.

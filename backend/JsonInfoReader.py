@@ -105,7 +105,7 @@ class JsonInfoReader:
 
 """
 if __name__ == "__main__" :
-    test = JsonInfoReader("info.json")
+    test = JsonInfoReader("json/info.json")
     test.listCategories()
     print "\n\n"
     test.listInsideCategories("raw")
