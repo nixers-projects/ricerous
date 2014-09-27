@@ -22,18 +22,13 @@ class Updater:
 
     """
     hasNewInfo :: Boolean
-    compare the local info file hash with the one found on the server
-    and returns true if they are different
+    compare the local version tag with the one found on the server
+    and returns true if the server version is newer
     """
     def hasNewInfo(self):
-        # Offline File
-        jsonFile = open(self._infoFile, 'r').read()
-        jsonHash = md5.new(jsonFile).hexdigest()
-        # Server File
-        servFile = self.br.open(self._server).read()
-        servHash = md5.new(servFile).hexdigest()
-        # Difference?
-        return (jsonHash != servHash)
+        jsonDate = open('version', 'r').read()
+        servDate = self.br.open(self._server).read()
+        return (jsonDate < servDate)
 
     """
     generateTimeStamp :: String
