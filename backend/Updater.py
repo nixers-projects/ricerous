@@ -1,5 +1,5 @@
 from urllib import URLopener
-import time
+from time import gmtime
 import md5
 
 """
@@ -26,19 +26,22 @@ class Updater:
     and returns true if they are different
     """
     def hasNewInfo(self):
-        f = open(self._infoFile, 'r').read()
-        m = md5.new(f).hexdigest()
-        response = self.br.open(self._server+'/hash').read()
-        response = response.replace("\n", "")
-        return (m != response)
+        # Offline File
+        jsonFile = open(self._infoFile, 'r').read()
+        jsonHash = md5.new(jsonFile).hexdigest()
+        # Server File
+        servFile = self.br.open(self._server).read().replace("\n", "")
+        servHash = md5.new(servFile).hexdigest()
+        # Difference?
+        return (jsonHash != servHash)
 
     """
     generateTimeStamp :: String
     returns a string that is used to timestamp old config backup files
     """
     def generateTimeStamp(self):
-        return str(time.gmtime().tm_year) + "_" + str(time.gmtime().tm_mday) + "_" + \
-            str(time.gmtime().tm_hour) + "_" + str(time.gmtime().tm_min)
+        return str(gmtime().tm_year) + "_" + str(gmtime().tm_mday) + "_" + \
+            str(gmtime().tm_hour) + "_" + str(gmtime().tm_min)
 
     """
     fetchNewInfo :: Void
