@@ -11,6 +11,7 @@ It loads all the available plugins from a plugin directory
 
 PLUGIN_PATHS = ["plugins"]
 
+
 class Outputer:
     """
     Constructor takes the plugin path
@@ -35,7 +36,7 @@ class Outputer:
                     good += 1
                 if name == "output":
                     good += 1
-            #has the 2 functions getName and output, so it's a good plugin
+            # Has the 2 functions getName and output, so it's a good plugin
             if good == 2:
                 availables.append(modname)
         return availables
@@ -45,11 +46,11 @@ class Outputer:
     a wrapper to return the list of available plugins
     """
     def getAvailable(self):
-        #availables = self.lister()
-        
-        #for available in availables:
-        #    m = importlib.import_module('plugins.'+available)
-        #    m.getName()
+        # availables = self.lister()
+
+        # for available in availables:
+        #     m = importlib.import_module('plugins.'+available)
+        #     m.getName()
         return self.lister()
 
     """
@@ -61,11 +62,11 @@ class Outputer:
     plugin directory
     """
     def output(self, module, state, info, location):
-        toImp = self.plugin_paths[0].replace("/",".")
+        toImp = self.plugin_paths[0].replace("/", ".")
         if not toImp.endswith("."):
             toImp = toImp+"."
         m = importlib.import_module(toImp+module)
-        toSave = m.output(state,info)
+        toSave = m.output(state, info)
         open(location, 'w').write(toSave)
 
 """
@@ -73,4 +74,3 @@ if __name__ == "__main__":
     output = Outputer()
     output.getAvailable()
 """
-

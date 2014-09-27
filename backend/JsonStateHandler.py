@@ -9,8 +9,10 @@ the state is a State object (State.py)
 save :: String -> State -> Void
 save the state in json format to a location specified
 """
-def save(saveLocation,state):
-    #save the comments and selected to a json file
+
+
+def save(saveLocation, state):
+    # Save the comments and selected to a json file
     saveOutput  = "{\n"
     saveOutput += '"comments":\n'
     saveOutput += json.JSONEncoder().encode(state.comments)+"\n"
@@ -24,10 +26,11 @@ load :: String -> State (by reference) -> Void
 load the state from a json file into a State object
 WARNING: this function will change the state
 """
+
+
 def load(loadLocation, state):
-    f              = open(loadLocation,'r')
+    f              = open(loadLocation, 'r')
     loaded         = json.load(f)
     f.close()
     state.comments = loaded['comments']
     state.selected = loaded['selections']
-

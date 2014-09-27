@@ -5,23 +5,24 @@ import State
 import Outputer
 import unittest
 
+
 class RicerTest(unittest.TestCase):
 
     def testInfoReader(self):
         info = JsonInfoReader.JsonInfoReader("info.json")
-        self.assertTrue(len(info.listCategories())>1)
-        self.assertTrue(len(info.listInsideCategories("raw"))>1)
-        self.assertFalse(len(info.listInsideCategories("Not Real Category"))>0)
-        self.assertTrue(len(info.getInfo("Bootloader"))>10)
-        self.assertFalse(len(info.getInfo("Not Real Info"))>0)
-        self.assertTrue(info.getCategory("Bootloader")=="raw")
-        self.assertFalse(info.getCategory("Not Real Category")=="raw")
-        self.assertFalse(info.getCategory("Not Real Category")!="")
+        self.assertTrue(len(info.listCategories()) > 1)
+        self.assertTrue(len(info.listInsideCategories("raw")) > 1)
+        self.assertFalse(len(info.listInsideCategories("Not Real Category")) > 0)
+        self.assertTrue(len(info.getInfo("Bootloader")) > 10)
+        self.assertFalse(len(info.getInfo("Not Real Info")) > 0)
+        self.assertTrue(info.getCategory("Bootloader") == "raw")
+        self.assertFalse(info.getCategory("Not Real Category") == "raw")
+        self.assertFalse(info.getCategory("Not Real Category") != "")
 
     def testState(self):
         state = State.State()
         state.addSelect("Bootloader")
-        state.addComment("Bootloader","I use a magenta... blah blah")
+        state.addComment("Bootloader", "I use a magenta... blah blah")
         self.assertTrue(len(state.comments) == 1)
         self.assertTrue(len(state.selected) == 1)
         state.addSelect("Window manager")
@@ -49,7 +50,8 @@ class RicerTest(unittest.TestCase):
 
     def testOutputer(self):
         out = Outputer.Outputer("plugins")
-        self.assertTrue(len(out.getAvailable())>0)
+        self.assertTrue(len(out.getAvailable()) > 0)
+
 
 def main():
     unittest.main()
