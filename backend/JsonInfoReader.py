@@ -24,8 +24,8 @@ class JsonInfoReader:
         WARNING: an Updater object is created in the constructor
         Might want to read that host from a file
         """
-        server = "raw.githubusercontent.com/Foggalong/ricerous/master/json"
-        self._updater = Updater.Updater("https://" + server + "/info.json",
+        server = "raw.githubusercontent.com/nixers-projects/ricerous/master"
+        self._updater = Updater.Updater("https://" + server + "/json/info.json",
                                         self._infoFile)
 
     """
