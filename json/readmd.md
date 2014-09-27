@@ -17,4 +17,4 @@ This is a version tag which checks for new versions of the info.json file. The t
     D: day
     X: extra
 
-For example, the first update to the list on the 27th of September 2014 would have the tag ```2014092700```, the second update would have the tag ```2014092701``` and so on.
+For example, the first update to the list on the 27th of September 2014 would have the tag ```2014092700```, the second update would have the tag ```2014092701```, the third is ```2014092702```, and so on.
