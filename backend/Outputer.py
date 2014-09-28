@@ -13,17 +13,17 @@ PLUGIN_PATHS = ["plugins"]
 
 
 class Outputer:
-    """
-    Constructor takes the plugin path
-    """
     def __init__(self, plugin_paths):
+        """
+        Constructor takes the plugin path
+        """
         self.plugin_paths = [plugin_paths]
 
-    """
-    lister :: [String]
-    returns the list of available plugins
-    """
     def lister(self):
+        """
+        lister :: [String]
+        returns the list of available plugins
+        """
         path = self.plugin_paths
         availables = []
         for loader, modname, is_pkg in pkgutil.walk_packages(path):
@@ -41,11 +41,11 @@ class Outputer:
                 availables.append(modname)
         return availables
 
-    """
-    getAvailable :: [String]
-    a wrapper to return the list of available plugins
-    """
     def getAvailable(self):
+        """
+        getAvailable :: [String]
+        a wrapper to return the list of available plugins
+        """
         # availables = self.lister()
 
         # for available in availables:
@@ -53,15 +53,15 @@ class Outputer:
         #     m.getName()
         return self.lister()
 
-    """
-    output :: String -> State -> JsonInfoReader -> String -> Void
-    takes the name of the output module (can be listed using getAvailable())
-    , a State object, a JsonInfoReader object, the location where you want
-    to save the output.
-    it will call the `output` method on the dynamically loaded module from the
-    plugin directory
-    """
     def output(self, module, state, info, location):
+        """
+        output :: String -> State -> JsonInfoReader -> String -> Void
+        takes the name of the output module (can be listed using getAvailable())
+        , a State object, a JsonInfoReader object, the location where you want
+        to save the output.
+        it will call the `output` method on the dynamically loaded module from the
+        plugin directory
+        """
         toImp = self.plugin_paths[0].replace("/", ".")
         if not toImp.endswith("."):
             toImp = toImp + "."

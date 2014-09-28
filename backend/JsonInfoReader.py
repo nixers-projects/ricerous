@@ -12,10 +12,10 @@ of the program.
 
 
 class JsonInfoReader:
-    """
-    Constructor takes an infoFile (String) as parameter
-    """
     def __init__(self, infoFile):
+        """
+        Constructor takes an infoFile (String) as parameter
+        """
         self._infoFile = infoFile
         info_json = open(infoFile, 'r')
         self._allInfo = json.load(info_json)
@@ -27,11 +27,11 @@ class JsonInfoReader:
         server = "https://raw.githubusercontent.com/nixers-projects/ricerous/master/"
         self._updater = Updater.Updater(server, self._infoFile)
 
-    """
-    refresh :: Int
-    reload the infoFile, at failure returns -1
-    """
     def refresh(self):
+        """
+        refresh :: Int
+        reload the infoFile, at failure returns -1
+        """
         try:
             self._allInfo = json.load(open(self._infoFile, 'r'))
             return 0
@@ -39,14 +39,14 @@ class JsonInfoReader:
             print("cannot re-read file")
             return -1
 
-    """
-    update :: Int
-    use the Updater object to try updating the info file if it has new info
-    if it doesn't have new info it returns 2
-    if it successfully updated the info it returns 0
-    if it failed it returns -1
-    """
     def update(self):
+        """
+        update :: Int
+        use the Updater object to try updating the info file if it has new info
+        if it doesn't have new info it returns 2
+        if it successfully updated the info it returns 0
+        if it failed it returns -1
+        """
         if self._updater.hasNewInfo():
             try:
                 self._updater.fetchNewInfo()
@@ -56,30 +56,30 @@ class JsonInfoReader:
                 return -1
         return 2
 
-    """
-    listCategories :: [String]
-    return a list of categories that have information (Headers)
-    """
     def listCategories(self):
+        """
+        listCategories :: [String]
+        return a list of categories that have information (Headers)
+        """
         categories = []
         for info in self._allInfo:
             categories.append(info)
         return categories
 
-    """
-    listInsideCategories :: String -> [String]
-    takes a category and returns the sub-categories found for that category
-    """
     def listInsideCategories(self, category):
+        """
+        listInsideCategories :: String -> [String]
+        takes a category and returns the sub-categories found for that category
+        """
         if category not in self._allInfo:
             return ""
         return self._allInfo[category]
 
-    """
-    getInfo :: String -> String
-    return the info for a particular category
-    """
     def getInfo(self, name):
+        """
+        getInfo :: String -> String
+        return the info for a particular category
+        """
         category = self.getCategory(name)
         if category not in self._allInfo:
             return ""
@@ -87,11 +87,11 @@ class JsonInfoReader:
             return ""
         return self._allInfo[category][name]
 
-    """
-    getCategory :: String -> String
-    takes a sub-category and returns the mother category
-    """
     def getCategory(self, name):
+        """
+        getCategory :: String -> String
+        takes a sub-category and returns the mother category
+        """
         thecategory = ""
         for category in self._allInfo:
             for info in self._allInfo[category]:
