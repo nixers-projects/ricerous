@@ -89,14 +89,3 @@ else:
 
 # Corrects formatting using Vim
 system('vim -c ":% !python -m json.tool" -c ":wq" info.json')
-
-# Prepend the no-edit warning
-jsonFile = open('info.json', 'r+')
-lines = jsonFile.readlines()
-jsonFile.seek(0)
-jsonFile.write("// DO NOT MODIFY THIS FILE!\n")
-jsonFile.write("// See the the header of `info_to_json.py` for more info\n")
-jsonFile.write("\n")
-for line in lines:
-    jsonFile.write(line)
-jsonFile.close()

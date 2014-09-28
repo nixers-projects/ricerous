@@ -5,7 +5,7 @@ This directory contains the JSON formatted data used by Ricerous. Here's a quick
 The personal config file.
 
 ## info.json & associated
-This file contains all the ricing date read by the program. It has several file associated with it to ensure that it can be updated smoothly.
+This file contains all the ricing date read by the program. It has several files associated with it to ensure that it can be updated smoothly. Please DO NOT modify this file directly.
 
 ### pad_info
 This markdown document is the base for all the info. If you wish to make changes to the displayed information, make them in this file.

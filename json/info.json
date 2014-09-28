@@ -1,6 +1,3 @@
-// DO NOT MODIFY THIS FILE!
-// See the the header of `info_to_json.py` for more info
-
 {
     "Others": {
         "Application launcher": "An application launcher is a program used as a kind of menu to start other programs.\nit can be a selection menu or a terminal like menu (input).\n\nSome comes built-in inside a DE taskbar (gnome-panel) some are third parties.\n\nRessources:\nhttps://wiki.archlinux.org/index.php/Category:Application_launchers\nhttps://wiki.archlinux.org/index.php/Xdg-open\n\n",
