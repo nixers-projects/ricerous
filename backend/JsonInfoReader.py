@@ -10,20 +10,22 @@ in the infoFile (json) so that they can be easily accessible for the rest
 of the program.
 """
 
+
 class JsonInfoReader:
     """
     Constructor takes an infoFile (String) as parameter
     """
-    def __init__(self,infoFile):
+    def __init__(self, infoFile):
         self._infoFile = infoFile
-        f              = open(infoFile,'r')
-        self._allInfo  = json.load(f)
-        f.close()
-        #might want to read that host from a file
+        info_json = open(infoFile, 'r')
+        self._allInfo = json.load(info_json)
+        info_json.close()
         """
         WARNING: an Updater object is created in the constructor
+        Might want to read that host from a file
         """
-        self._updater  = Updater.Updater("http://venam.nixers.net", self._infoFile)
+        server = "https://raw.githubusercontent.com/nixers-projects/ricerous/master/"
+        self._updater = Updater.Updater(server, self._infoFile)
 
     """
     refresh :: Int
@@ -31,7 +33,7 @@ class JsonInfoReader:
     """
     def refresh(self):
         try:
-            self._allInfo = json.load(open(self._infoFile,'r'))
+            self._allInfo = json.load(open(self._infoFile, 'r'))
             return 0
         except Exception:
             print("cannot re-read file")
@@ -68,7 +70,7 @@ class JsonInfoReader:
     listInsideCategories :: String -> [String]
     takes a category and returns the sub-categories found for that category
     """
-    def listInsideCategories(self,category):
+    def listInsideCategories(self, category):
         if category not in self._allInfo:
             return ""
         return self._allInfo[category]
@@ -77,7 +79,7 @@ class JsonInfoReader:
     getInfo :: String -> String
     return the info for a particular category
     """
-    def getInfo(self,name):
+    def getInfo(self, name):
         category = self.getCategory(name)
         if category not in self._allInfo:
             return ""
@@ -89,7 +91,7 @@ class JsonInfoReader:
     getCategory :: String -> String
     takes a sub-category and returns the mother category
     """
-    def getCategory(self,name):
+    def getCategory(self, name):
         thecategory = ""
         for category in self._allInfo:
             for info in self._allInfo[category]:
@@ -103,7 +105,7 @@ class JsonInfoReader:
 
 """
 if __name__ == "__main__" :
-    test = JsonInfoReader("info.json")
+    test = JsonInfoReader("json/info.json")
     test.listCategories()
     print "\n\n"
     test.listInsideCategories("raw")

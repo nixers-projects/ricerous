@@ -1,10 +1,9 @@
 from urllib import URLopener
-import time
-import md5
 
 """
 The role of this class is to handle the Update of the configurations
 """
+
 
 class Updater:
     """
@@ -12,29 +11,28 @@ class Updater:
     it will use this server to fetch the new information
     there should be a /hash and /info.json dir on this server
     """
-    def __init__(self,server,infoFile):
-        self._server = server
+    def __init__(self, server, infoFile):
         self._infoFile = infoFile
+        self._serverJSON = server + self._infoFile
+        self._serverDate = server + "json/version"
         self.br = URLopener()
 
     """
     hasNewInfo :: Boolean
-    compare the local info file hash with the one found on the server
-    and returns true if they are different
+    compare the local version tag with the one found on the server
+    and returns true if the server version is newer
     """
     def hasNewInfo(self):
-        f = open(self._infoFile,'r').read()
-        m = md5.new(f).hexdigest()
-        response = self.br.open(self._server+'/hash').read()
-        response = response.replace("\n","")
-        return (m!=response)
+        jsonDate = open('json/version', 'r').read().strip()
+        servDate = self.br.open(self._serverDate).read().strip()
+        return (int(jsonDate) < int(servDate))
 
     """
     generateTimeStamp :: String
     returns a string that is used to timestamp old config backup files
     """
     def generateTimeStamp(self):
-        return str(time.gmtime().tm_year)+"_"+str(time.gmtime().tm_mday)+"_"+str(time.gmtime().tm_hour)+"_"+str(time.gmtime().tm_min)
+        return open('json/version', 'r').read().strip()
 
     """
     fetchNewInfo :: Void
@@ -43,8 +41,11 @@ class Updater:
     and overwrite it
     """
     def fetchNewInfo(self):
-        response = self.br.open(self._server+'/info.json').read()
-        oldInfo = open(self._infoFile,'r').read()
-        open(self._infoFile+"."+self.generateTimeStamp(),'w').write(oldInfo)
-        open(self._infoFile,'w').write(response)
-
+        # Fetching server's info.json
+        response = self.br.open(self._serverJSON).read()
+        oldInfo = open(self._infoFile, 'r').read()
+        open(self._infoFile + "." + self.generateTimeStamp(), 'w').write(oldInfo)
+        open(self._infoFile, 'w').write(response)
+        # Fetching server's version
+        servDate = int(self.br.open(self._serverDate).read().strip())
+        open("json/version", 'w').write(str(servDate))
