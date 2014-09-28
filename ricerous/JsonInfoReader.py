@@ -2,7 +2,7 @@
 
 import sys
 import json
-import Updater
+import ricerous.Updater
 
 """
 The role of the JsonInfoReader class is to handle the information located
@@ -25,7 +25,7 @@ class JsonInfoReader:
         Might want to read that host from a file
         """
         server = "https://raw.githubusercontent.com/nixers-projects/ricerous/master/"
-        self._updater = Updater.Updater(server, self._infoFile)
+        self._updater = ricerous.Updater.Updater(server, self._infoFile)
 
     def refresh(self):
         """

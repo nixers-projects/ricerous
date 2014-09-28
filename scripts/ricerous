@@ -14,20 +14,21 @@ from kivy.uix.scrollview import ScrollView
 from kivy.uix.floatlayout import FloatLayout
 from kivy.factory import Factory
 from kivy.uix.popup import Popup
-
+from kivy.lang import Builder
 from kivy.core.window import Window
 from kivy.graphics import Color, Rectangle
 from kivy.properties import StringProperty, ObjectProperty
 from getpass import getuser
 from socket import gethostname
-from backend import JsonInfoReader, State, Outputer
+from pkg_resources import resource_filename
+import ricerous.JsonInfoReader, ricerous.State, ricerous.Outputer
 import time
 import os
 
 
-jfile = JsonInfoReader.JsonInfoReader("json/info.json")
-state = State.State()
-out = Outputer.Outputer("plugins")
+jfile = ricerous.JsonInfoReader.JsonInfoReader(resource_filename("ricerous", "json/info.json"))
+state = ricerous.State.State()
+out = ricerous.Outputer.Outputer(resource_filename("ricerous", "plugins"))
 
 subButtons = {}
 
@@ -352,6 +353,7 @@ class MainScreen(BoxLayout):
 class RiceApp(App):
 
     def build(self):
+        self.root = Builder.load_file(resource_filename("ricerous", "rice.kv"))
         win = MainScreen()
         Window.clearcolor = (0.15, 0.15, 0.15, 1)
         return win

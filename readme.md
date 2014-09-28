@@ -18,3 +18,13 @@ can then be exported/imported in multiple formats. We hope it will:
 
 and will be useful to both beginner ricers that don't know where to start and
 advanced users that get lost when they want to share info about their setup alike.
+
+## Installation
+
+First, install setuptools. Then, run:
+
+    $ sudo python setup.py install
+
+After that, you can run Ricerous:
+
+    $ ricerous

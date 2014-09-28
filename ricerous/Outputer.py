@@ -7,11 +7,6 @@ The purpose of the Outputer class it to provide a dynamic way of outputing
 the State object (State.py)
 It loads all the available plugins from a plugin directory
 """
-
-
-PLUGIN_PATHS = ["plugins"]
-
-
 class Outputer:
     def __init__(self, plugin_paths):
         """

@@ -1,4 +1,4 @@
-import JsonStateHandler
+import ricerous.JsonStateHandler
 
 """
 The purpose of the State class is to keep track of the temporary changes
@@ -21,14 +21,14 @@ class State:
         """
         self.selected = []
         self.comments = {}
-        JsonStateHandler.load(loadLocation, self)
+        ricerous.JsonStateHandler.load(loadLocation, self)
 
     def save(self, savelocation):
         """
         save :: String -> Void
         a wrapper to save state to a json file
         """
-        JsonStateHandler.save(savelocation, self)
+        ricerous.JsonStateHandler.save(savelocation, self)
 
     def addComment(self, section, comment):
         """
