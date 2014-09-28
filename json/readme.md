@@ -4,17 +4,14 @@ This directory contains the JSON formatted data used by Ricerous. Here's a quick
 ## conf.json
 The personal config file.
 
-## info.json & info_to_json.py & pad_info
-The python script generates the  ```info.json``` file from the markdown ```pad_info``` file during development.
+## info.json & associated
+This file contains all the ricing date read by the program. It has several file associated with it to ensure that it can be updated smoothly.
 
-## version
-This is a version tag which checks for new versions of the info.json file. The tag has the following format
+### pad_info
+This markdown document is the base for all the info. If you wish to make changes to the displayed information, make them in this file.
 
-    YYYYMMDDXX
+### info_to_json.py
+After making changes, run this script. This will update the JSON file and correct it's formatting using Vim. See the file header for futher usage information.
 
-    Y: year
-    M: month
-    D: day
-    X: extra
-
-For example, the first update to the list on the 27th of September 2014 would have the tag ```2014092700```, the second update would have the tag ```2014092701```, the third is ```2014092702```, and so on.
+### version
+This is the version date-tag for the JSON file, used by the program to determin if a newer version is available for download. It is incremented automatically by the python script.
