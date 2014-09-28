@@ -95,7 +95,7 @@ jsonFile = open('info.json', 'r+')
 lines = jsonFile.readlines()
 jsonFile.seek(0)
 jsonFile.write("// DO NOT MODIFY THIS FILE!\n")
-jsonFile.write("// The the header of `info_to_json.py` for more info\n")
+jsonFile.write("// See the the header of `info_to_json.py` for more info\n")
 jsonFile.write("\n")
 for line in lines:
     jsonFile.write(line)
