@@ -1,10 +1,10 @@
 #!/usr/bin/env python
-from backend import Outputer, JsonInfoReader, State
+from ricerous import Outputer, JsonInfoReader, State
 import random
 
-out = Outputer.Outputer("plugins")
+out = Outputer.Outputer("ricerous/plugins")
 state = State.State()
-info = JsonInfoReader.JsonInfoReader("json/info.json")
+info = JsonInfoReader.JsonInfoReader("ricerous/json/info.json")
 state.addSelect("Bootloader")
 state.addComment("Bootloader", "I use a magenta... blah blah")
 state.addSelect("Window manager")
