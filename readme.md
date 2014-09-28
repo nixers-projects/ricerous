@@ -21,7 +21,7 @@ advanced users that get lost when they want to share info about their setup alik
 
 ## Installation
 
-First, install pygame, kivy and setuptools. Then, run:
+First, install setuptools. Then, run:
 
     $ sudo python setup.py install
 

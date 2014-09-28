@@ -19,5 +19,10 @@ setup(
     },
     scripts = [
         "scripts/ricerous"
+    ],
+    install_requires = [
+        "kivy",
+        "pygame",
+        "cython"
     ]
 )
