@@ -24,5 +24,6 @@ setup(
         "kivy",
         "pygame",
         "cython"
-    ]
+    ],
+    test_suite = "ricerous.unit_test"
 )

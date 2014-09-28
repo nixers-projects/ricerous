@@ -1,15 +1,15 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python
 
 import ricerous.JsonInfoReader
 import ricerous.State
 import ricerous.Outputer
 import unittest
-
+from pkg_resources import resource_filename
 
 class RicerTest(unittest.TestCase):
 
     def testInfoReader(self):
-        info = ricerous.JsonInfoReader.JsonInfoReader("json/info.json")
+        info = ricerous.JsonInfoReader.JsonInfoReader(resource_filename("ricerous","json/info.json"))
         self.assertTrue(len(info.listCategories()) > 1)
         self.assertTrue(len(info.listInsideCategories("raw")) > 1)
         self.assertFalse(len(info.listInsideCategories("Not Real Category")) > 0)
@@ -44,12 +44,12 @@ class RicerTest(unittest.TestCase):
         self.assertTrue(len(state.selected) == 2)
         state.comments = {}
         state.selected = []
-        state.load("json/conf.json")
+        state.load(resource_filename("ricerous", "json/conf.json"))
         self.assertTrue(len(state.comments) > 0)
         self.assertTrue(len(state.selected) > 0)
 
     def testOutputer(self):
-        out = ricerous.Outputer.Outputer("plugins")
+        out = ricerous.Outputer.Outputer(resource_filename("ricerous", "plugins"))
         self.assertTrue(len(out.getAvailable()) > 0)
 
 
