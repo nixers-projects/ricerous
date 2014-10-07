@@ -5,8 +5,8 @@ This script generates the JSON information file which is used by Ricerous.
 If you wish to make any changes to the information displayed, please follow
 these steps:
 
-  1. Make desired changes to `info.md` (markdown formatted)
-  2. Run this script (`python info_to_json.py`)
+  1. Make desired changes to `info.md`
+  2. Run this script (`python md2json.py`)
 
 This script will then update your changes to `info.json`, correct its file
 formatting using Vim, and then increment the version number meaning that
