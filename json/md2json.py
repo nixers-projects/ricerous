@@ -5,7 +5,7 @@ This script generates the JSON information file which is used by Ricerous.
 If you wish to make any changes to the information displayed, please follow
 these steps:
 
-  1. Make desired changes to `pad_info` (markdown formatted)
+  1. Make desired changes to `info.md` (markdown formatted)
   2. Run this script (`python info_to_json.py`)
 
 This script will then update your changes to `info.json`, correct its file
@@ -17,7 +17,7 @@ import json
 from os import system
 from datetime import datetime
 
-my_file = open("pad_info", 'r').readlines()
+my_file = open("info.md", 'r').readlines()
 
 section = -1
 category = -1
