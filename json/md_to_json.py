@@ -6,7 +6,7 @@ If you wish to make any changes to the information displayed, please follow
 these steps:
 
   1. Make desired changes to `info.md`
-  2. Run this script (`python md2json.py`)
+  2. Run this script (`python md_to_json.py`)
 
 This script will then update your changes to `info.json`, correct its file
 formatting using Vim, and then increment the version number meaning that
