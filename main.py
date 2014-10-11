@@ -24,8 +24,9 @@ from backend import JsonInfoReader, State, Outputer
 import time
 import os
 
+from backend import location_manager
 
-jfile = JsonInfoReader.JsonInfoReader("json/info.json")
+jfile = JsonInfoReader.JsonInfoReader(location_manager.PER_USER_LOCATION+"/info.json")
 state = State.State()
 out = Outputer.Outputer("plugins")
 
