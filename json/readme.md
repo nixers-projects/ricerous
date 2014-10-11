@@ -7,10 +7,10 @@ The personal config file.
 ## info.json & associated
 This file contains all the ricing date read by the program. It has several files associated with it to ensure that it can be updated smoothly. Please DO NOT modify this file directly.
 
-### pad_info
+### info.md
 This markdown document is the base for all the info. If you wish to make changes to the displayed information, make them in this file.
 
-### info_to_json.py
+### md_to_json.py
 After making changes, run this script. This will update the JSON file and correct it's formatting using Vim. See the file header for futher usage information.
 
 ### version
