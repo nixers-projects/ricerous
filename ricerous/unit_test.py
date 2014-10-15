@@ -1,13 +1,9 @@
 #!/usr/bin/env python2
 
 import sys
-try:
-    from backend import JsonInfoReader
-    from backend import State
-    from backend import Outputer
-except Exception:
-    #exits when not called as a unit test script
-    sys.exit(1)
+from backend import JsonInfoReader
+from backend import State
+from backend import Outputer
 import unittest
 
 

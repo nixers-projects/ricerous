@@ -4,7 +4,10 @@ if sys.version < '3':
 else:
     from urllib import request
 
-from ricerous.backend import location_manager
+try:
+    from ricerous.backend import location_manager
+except Exception:
+    from backend import location_manager
 
 """
 The role of this class is to handle the Update of the configurations
