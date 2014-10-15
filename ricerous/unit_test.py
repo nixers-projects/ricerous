@@ -1,9 +1,12 @@
 #!/usr/bin/env python2
 
 import sys
-from backend import JsonInfoReader
-from backend import State
-from backend import Outputer
+try:
+    from backend import JsonInfoReader
+    from backend import State
+    from backend import Outputer
+except Exception:
+    sys.exit(1)
 import unittest
 
 
