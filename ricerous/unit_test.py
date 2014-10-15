@@ -1,15 +1,20 @@
 #!/usr/bin/env python2
 
-import JsonInfoReader
-import State
-import Outputer
+import sys
+try:
+    from backend import JsonInfoReader
+    from backend import State
+    from backend import Outputer
+except Exception:
+    #exits when not called as a unit test script
+    sys.exit(1)
 import unittest
 
 
 class RicerTest(unittest.TestCase):
 
     def testInfoReader(self):
-        info = JsonInfoReader.JsonInfoReader("json/info.json")
+        info = JsonInfoReader.JsonInfoReader("ricerous/json/info.json")
         self.assertTrue(len(info.listCategories()) > 1)
         self.assertTrue(len(info.listInsideCategories("raw")) > 1)
         self.assertFalse(len(info.listInsideCategories("Not Real Category")) > 0)
@@ -44,12 +49,12 @@ class RicerTest(unittest.TestCase):
         self.assertTrue(len(state.selected) == 2)
         state.comments = {}
         state.selected = []
-        state.load("json/conf.json")
+        state.load("ricerous/json/conf.json")
         self.assertTrue(len(state.comments) > 0)
         self.assertTrue(len(state.selected) > 0)
 
     def testOutputer(self):
-        out = Outputer.Outputer("plugins")
+        out = Outputer.Outputer("ricerous/plugins")
         self.assertTrue(len(out.getAvailable()) > 0)
 
 

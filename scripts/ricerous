@@ -14,21 +14,26 @@ from kivy.uix.scrollview import ScrollView
 from kivy.uix.floatlayout import FloatLayout
 from kivy.factory import Factory
 from kivy.uix.popup import Popup
-
+from kivy.lang import Builder
 from kivy.core.window import Window
 from kivy.graphics import Color, Rectangle
 from kivy.properties import StringProperty, ObjectProperty
 from getpass import getuser
 from socket import gethostname
-from backend import JsonInfoReader, State, Outputer
+from pkg_resources import resource_filename
 import time
 import os
 
-from backend import location_manager
 
-jfile = JsonInfoReader.JsonInfoReader(location_manager.PER_USER_LOCATION+"/info.json")
+from ricerous.backend import location_manager
+from ricerous.backend import JsonInfoReader
+from ricerous.backend import State
+from ricerous.backend import Outputer
+
+
+jfile = JsonInfoReader.JsonInfoReader(location_manager.INFO)
 state = State.State()
-out = Outputer.Outputer("plugins")
+out = Outputer.Outputer(resource_filename("ricerous", "plugins"))
 
 subButtons = {}
 
@@ -335,7 +340,10 @@ class ButtonBar(BoxLayout):
 
     def dismiss_popup(self):
         self.outputing = False
-        self._popup.dismiss()
+        try:
+            self._popup.dismiss()
+        except Exception:
+            return
 
 
 class MainScreen(BoxLayout):
@@ -353,6 +361,7 @@ class MainScreen(BoxLayout):
 class RiceApp(App):
 
     def build(self):
+        self.root = Builder.load_file(resource_filename("ricerous","rice.kv"))
         win = MainScreen()
         Window.clearcolor = (0.15, 0.15, 0.15, 1)
         return win

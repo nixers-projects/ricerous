@@ -1,4 +1,7 @@
-import JsonStateHandler
+try:
+    from ricerous.backend import JsonStateHandler
+except Exception:
+    from backend import JsonStateHandler
 
 """
 The purpose of the State class is to keep track of the temporary changes

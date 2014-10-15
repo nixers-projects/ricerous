@@ -4,6 +4,7 @@ if sys.version < '3':
 else:
     from urllib import request
 
+from ricerous.backend import location_manager
 
 """
 The role of this class is to handle the Update of the configurations
@@ -31,7 +32,7 @@ class Updater:
         compare the local version tag with the one found on the server
         and returns true if the server version is newer
         """
-        jsonDate = open('json/version', 'r').read().strip()
+        jsonDate = open(location_manager.VERSION , 'r').read().strip()
         if sys.version < '3':
             servDate = self.br.open(self._serverDate).read().strip()
         else:
@@ -43,7 +44,7 @@ class Updater:
         generateTimeStamp :: String
         returns a string that is used to timestamp old config backup files
         """
-        return open('json/version', 'r').read().strip()
+        return open(location_manager.VERSION, 'r').read().strip()
 
     def fetchNewInfo(self):
         """
@@ -65,4 +66,4 @@ class Updater:
             servDate = int(self.br.open(self._serverDate).read().strip())
         else:
             servDate = int(self.br.urlopen(self._serverDate).read().strip())
-        open("json/version", 'w').write(str(servDate))
+        open(location_manager.VERSION, 'w').write(str(servDate))

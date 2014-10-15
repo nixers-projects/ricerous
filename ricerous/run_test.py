@@ -1,5 +1,10 @@
 #!/usr/bin/env python
-from backend import Outputer, JsonInfoReader, State
+import sys
+try:
+    from backend import Outputer, JsonInfoReader, State
+except Exception:
+    #exits when not called as a test script
+    sys.exit(1)
 import random
 
 out = Outputer.Outputer("plugins")

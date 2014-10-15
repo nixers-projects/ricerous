@@ -2,7 +2,10 @@
 
 import sys
 import json
-import Updater
+try:
+    from ricerous.backend import Updater
+except Exception:
+    from backend import Updater
 
 """
 The role of the JsonInfoReader class is to handle the information located
