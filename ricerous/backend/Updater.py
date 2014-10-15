@@ -9,6 +9,8 @@ try:
 except Exception:
     from backend import location_manager
 
+print location_manager.VERSION
+
 """
 The role of this class is to handle the Update of the configurations
 """
