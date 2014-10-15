@@ -1,4 +1,9 @@
-from urllib import URLopener
+import sys
+if sys.version < '3':
+    from urllib import URLopener
+else:
+    from urllib import request
+
 
 """
 The role of this class is to handle the Update of the configurations
@@ -15,7 +20,10 @@ class Updater:
         self._infoFile = infoFile
         self._serverJSON = server + self._infoFile
         self._serverDate = server + "json/version"
-        self.br = URLopener()
+        if sys.version < '3':
+            self.br = URLopener()
+        else:
+            self.br = request
 
     def hasNewInfo(self):
         """
@@ -24,7 +32,10 @@ class Updater:
         and returns true if the server version is newer
         """
         jsonDate = open('json/version', 'r').read().strip()
-        servDate = self.br.open(self._serverDate).read().strip()
+        if sys.version < '3':
+            servDate = self.br.open(self._serverDate).read().strip()
+        else:
+            servDate = self.br.urlopen(self._serverDate).read().strip()
         return (int(jsonDate) < int(servDate))
 
     def generateTimeStamp(self):
@@ -42,10 +53,16 @@ class Updater:
         and overwrite it
         """
         # Fetching server's info.json
-        response = self.br.open(self._serverJSON).read()
+        if sys.version < '3':
+            response = self.br.open(self._serverJSON).read()
+        else:
+            response = self.br.urlopen(self._serverJSON).read().decode("utf-8")
         oldInfo = open(self._infoFile, 'r').read()
         open(self._infoFile + "." + self.generateTimeStamp(), 'w').write(oldInfo)
         open(self._infoFile, 'w').write(response)
         # Fetching server's version
-        servDate = int(self.br.open(self._serverDate).read().strip())
+        if sys.version < '3':
+            servDate = int(self.br.open(self._serverDate).read().strip())
+        else:
+            servDate = int(self.br.urlopen(self._serverDate).read().strip())
         open("json/version", 'w').write(str(servDate))
