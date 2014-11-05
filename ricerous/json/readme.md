@@ -1,5 +1,5 @@
 # JSON
-This directory contains the JSON formatted data used by Ricerous. Here's a quick run down over which does.
+This directory contains the JSON formatted data used by Ricerous. Here's a quick run down over what it does.
 
 ## conf.json
 The personal config file.
@@ -14,4 +14,4 @@ This markdown document is the base for all the info. If you wish to make changes
 After making changes, run this script. This will update the JSON file and correct it's formatting using Vim. See the file header for futher usage information.
 
 ### version
-This is the version date-tag for the JSON file, used by the program to determin if a newer version is available for download. It is incremented automatically by the python script.
+This is the version date-tag for the JSON file, used by the program to determine if a newer version is available for download. It is incremented automatically by the python script.
