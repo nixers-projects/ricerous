@@ -43,7 +43,6 @@ The program depends on Kivy.
 
 ## TODO list
 
-  * Write a thread explaining how to use the program and to share configs
   * Test/Debug the Program (Doesn't need programming knowledge)
 
 
