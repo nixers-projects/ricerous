@@ -1,6 +1,6 @@
 # Ricerous - A Ricer Helper
 
-WIP, A Nixers community project
+A Nixers community project
 
 ![unit test](https://travis-ci.org/nixers-projects/ricerous.svg)
 
