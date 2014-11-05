@@ -58,7 +58,7 @@ The program depends on Kivy.
 ## More Information
 
   * [Development thread on the Nixers.net forums](http://nixers.net/showthread.php?tid=1518)
-
+  * [Tutorial & Sharing thread on the Nixers.net forums](http://nixers.net/showthread.php?tid=1579)
 
 ## Contributors
 
