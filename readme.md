@@ -16,5 +16,63 @@ can then be exported/imported in multiple formats. We hope it will:
   * Remove the mystification around the word "ricing".
   * Easily share one's setup on forums/boards.
 
-and will be useful to both beginner ricers that don't know where to start and
-advanced users that get lost when they want to share info about their setup alike.
+## Goals
+
+  * Make it easy to redo another person's setup.
+  * Remove the mystification around the word "ricing".
+  * Easily share one's setup on forums/boards.
+
+## User Base
+
+  * Beginner ricers that don't know where to start.
+  * Advanced users that get lost when they want to share info about their setup.
+
+
+## Instalation
+
+The program depends on Kivy.
+
+`git clone https://github.com/nixers-projects/ricerous`
+
+`cd ricerous`
+
+`sudo python2 setup.py install`
+
+`ricerous`
+
+
+## TODO list
+
+  * Write a thread explaining how to use the program and to share configs
+  * Test/Debug the Program (Doesn't need programming knowledge)
+
+
+## Screenshots
+
+![one](http://pub.iotek.org/p/E3kXJUk.png)
+![two](http://pub.iotek.org/p/e53QyX2.png)
+![three](http://pub.iotek.org/p/Fpu6NcN.png)
+![four](http://pub.iotek.org/p/xP28lIO.png)
+
+
+## More Information
+
+  * [Development thread on the Nixers.net forums](http://nixers.net/showthread.php?tid=1518)
+
+
+## Contributors
+
+  * Dami
+  * Z3bra
+  * Foggalong
+  * pizzaroll1 (kaashif-hymabaccus)
+  * Jolia
+  * Kirby
+  * DotDev
+  * Dcli
+  * Venam
+  * Vompatti
+  * Earsplit
+
+
+The rest of the community for giving ideas, opinions, and helping choose a name. 
