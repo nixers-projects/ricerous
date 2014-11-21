@@ -64,7 +64,7 @@ The program depends on Kivy.
   * Dami
   * Z3bra
   * Foggalong
-  * pizzaroll1 (kaashif-hymabaccus)
+  * pizzaroll1 (kaashif)
   * Jolia
   * Kirby
   * DotDev
