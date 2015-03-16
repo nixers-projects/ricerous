@@ -31,14 +31,22 @@ can then be exported/imported in multiple formats. We hope it will:
 ## Instalation
 
 The program depends on Kivy.
+To install kivy 1.8.0 with APT
+```
+sudo add-apt-repository ppa:kivy-team/kivy
+sudo apt-get update
+sudo apt-get install python-kivy
+```
 
-`git clone https://github.com/nixers-projects/ricerous`
+```
+git clone https://github.com/nixers-projects/ricerous
 
-`cd ricerous`
+cd ricerous
 
-`sudo python2 setup.py install`
+sudo python2 setup.py install
 
-`ricerous`
+ricerous
+```
 
 
 ## TODO list
