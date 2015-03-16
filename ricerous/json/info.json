@@ -6,7 +6,7 @@
         "Notification system": "Desktop notifications are pops-up that signals an event update.\nThey are used to keep you updated about multiple things. \n\nFor example:\n    * Change of sound volume\n    * Change of brightness\n    * Change of network connection\n\nRessources:\nhttps://wiki.archlinux.org/index.php/Desktop_Notifications\nhttp://blog.z3bra.org/2014/04/pop-it-up.html\n\n",
         "Others": "\n",
         "Screen locker": "A screen locker blocks input to your machine until the right password has been entered.\n\nA lot of extravagant way can be used to achieve so:\n    * Blurring the screen and adding a padlock to the middle\n    * Changing the image to something else,\n    * Do a futurist menu to enter your machine\n    * have a nice input dialog\n    * etc...\n\nRessources:\nhttps://wiki.archlinux.org/index.php/List_of_applications#Screen_lockers\n\n",
-        "Show-off Colors": "pipes.sh \nhttps://github.com/livibetter/pipes.sh\ninvaders.sh\ncmatrix\nhttp://dotshare.it/category/terms/colors/\nmore links...\n\n"
+        "Show-off Colors": "pipes.sh \nThis repository contains all the most popular color scripts\nhttps://github.com/gstk/Color-Scripts\n\n"
     },
     "common applications": {
         "Chat client": "Chat clients, instant messagers.It's extremely hard to explain how to rice them due to their variety.\n\nThe mostly riced are the irc clients: irssi and weechat.\n\nA list of things you can change in them:\n    * Nickname alignement\n    * Colors\n    * Informations\n    * Plugins\n\n",
