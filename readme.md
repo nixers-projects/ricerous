@@ -28,7 +28,7 @@ can then be exported/imported in multiple formats. We hope it will:
   * Advanced users that get lost when they want to share info about their setup.
 
 
-## Instalation
+## Installation
 
 The program depends on Kivy.
 To install kivy 1.8.0 with APT
