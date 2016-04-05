@@ -43,7 +43,9 @@ The TTY is the most basic way to interact with a *nix system. Spending a lot of 
 
 The TTY only accepts some specific types of fonts. On GNU/Linux they can be found in /usr/share/kbd/console/fonts. You can show the current font using the `showconsolefont` command and change the font using the `setfont` command.
 
-The default TTY colors are white on black. To change them you'll have to use perl-term-extendedcolor-tty (ttycolor) or just use `echo` with some special escape characters for colors(set them in your shell).
+You can convert bdf fonts (tewi for example) to the font used by the TTY using tools such as what is mentioned in this post: https://bbs.archlinux.org/viewtopic.php?pid=770649#p770649
+
+The default TTY colors are white on black. To change them you'll have to use perl-term-extendedcolor-tty (ttycolor - https://github.com/trapd00r/ttycolor) or just use `echo` with some special escape characters for colors(set them in your shell).
 
 To make it easy to multitask in the TTY you'll have to use a terminal multiplexer, a program that lets you use multiple terminals (emulator) in the same TTY and (but not inclusive) detach programs from one terminal to another. Tmux or dtach+dvtm can do this.
 
