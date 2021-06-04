@@ -65,7 +65,7 @@ class Outputer:
         toImp = self.plugin_paths[0].replace("/", ".")
         if not toImp.endswith("."):
             toImp = toImp + "."
-        if "eggs" in toImp :
+        if "eggs" in toImp.lower() :
             toImp = "ricerous.plugins."
         m = importlib.import_module(toImp + module)
         toSave = m.output(state, info)
